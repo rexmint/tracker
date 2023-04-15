@@ -156,3 +156,15 @@ def view_items():
 
     # Pack the table into the window and display it
     table.pack(expand=True, fill="both")
+    
+def add_new_items():
+    # Create a new instance of the NewItem class
+    new_item_window = NewItem()
+
+    # Make the new item window modal
+    new_item_window.grab_set()
+    root.wait_window(new_item_window)
+
+    # Reload the item list to show the newly added item
+    load_items()
+    
