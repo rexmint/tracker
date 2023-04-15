@@ -115,3 +115,44 @@ def add_item():
     # Save the values to the database or file
     # TODO: Implement this
     print(date, item_desc, metal_class, sealed, shipping_info, metal_weight, storage_location, cost)
+
+def view_items():
+    """Load a new window that displays a table of all the items in the database"""
+
+    # Create a new window for displaying the table
+    view_items_window = tk.Toplevel(root)
+    view_items_window.title("View All Items")
+
+    # Create a treeview widget for displaying the table
+    table = ttk.Treeview(view_items_window)
+
+    # Define the columns of the table
+    table["columns"] = (
+        "Date",
+        "Item Description",
+        "Metal Class",
+        "Sealed",
+        "Shipping Info",
+        "Metal Weight (troy oz)",
+        "Storage Location",
+        "Cost"
+    )
+
+    # Set the column headings
+    table.heading("#0", text="ID")
+    table.heading("#1", text="Date")
+    table.heading("#2", text="Item Description")
+    table.heading("#3", text="Metal Class")
+    table.heading("#4", text="Sealed")
+    table.heading("#5", text="Shipping Info")
+    table.heading("#6", text="Metal Weight (troy oz)")
+    table.heading("#7", text="Storage Location")
+    table.heading("#8", text="Cost")
+
+    # Retrieve all items from the database and populate the table
+    items = get_all_items()
+    for item in items:
+        table.insert(parent="", index="end", iid=item[0], text=item[0], values=item[1:])
+
+    # Pack the table into the window and display it
+    table.pack(expand=True, fill="both")
