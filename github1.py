@@ -1,5 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import Label
+from tkinter import Entry
+from tkinter import Button
+from tkinter import messagebox
+
 
 class TrackerApp:
     def __init__(self, master):
@@ -167,4 +172,4 @@ def add_new_items():
 
     # Reload the item list to show the newly added item
     load_items()
-    
+  
